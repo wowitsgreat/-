@@ -1,38 +1,31 @@
-# -*- coding: utf-8 -*-
-# Copyright (c) 2016 the Pockets team, see AUTHORS.
-# Licensed under the BSD License, see LICENSE for details.
+import discord
+import os
 
-"""*Let me check my pockets...*
+client = discord.Client()
 
-Functions available in the `pockets.*` submodules are also imported to the base
-package for easy access, so::
-
-    from pockets import camel, peek_iter, resolve
-
-works just as well as::
-
-    from pockets.inspect import resolve
-    from pockets.iterators import peek_iter
-    from pockets.string import camel
-
-"""
-
-from __future__ import absolute_import
-from pockets._version import __version__
-from pockets.collections import is_listy, listify, mappify
-from pockets.inspect import resolve
-from pockets.iterators import peek_iter, modify_iter
-from pockets.string import camel, uncamel, splitcaps, UnicodeMixin
+@client.event
+async def on_ready():
+    print(client.user.id)
+    print("ready")
 
 
-__all__ = ["__version__",
-           "camel",
-           "uncamel",
-           "splitcaps",
-           "UnicodeMixin",
-           "resolve",
-           "is_listy",
-           "listify",
-           "mappify",
-           "peek_iter",
-           "modify_iter"]
+
+@client.event
+async def on_message(message):
+    if message.content.startswith("난 잘생겼어"):
+        await message.channel.send("월월 월 워얼..!")
+    if message.content.startswith("난 정상인이야"):
+        await message.channel.send("월월 월 워얼..!")
+    if message.content.startswith("난 개멋져"):
+        await message.channel.send("월월 월 워얼..!")
+    if message.content.startswith("뀨뀨"):
+        await message.channel.send("월월 월 워얼..!")
+    if message.content.startswith("난 개 멋짐"):
+        await message.channel.send("월월 월 워얼..!")
+    if message.content.startswith("ㅗ"):
+        await message.channel.send("그르릉 월")
+    if message.content.startswith("민회장귀요미"):
+        await message.channel.send("개로서도 납득할수없는 소리입니다")
+
+access_token = os.eviron["BOT_TOKEN"]        
+client.run(acess_token)
